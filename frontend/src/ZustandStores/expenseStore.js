@@ -2,7 +2,7 @@ import { create } from "zustand";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const baseUrl = "http://localhost:3000/api/expense";
+const baseUrl = "https://spendly-qhpk.onrender.com/api/expense";
 axios.defaults.withCredentials = true;
 
 export const useExpense = create((set) => ({

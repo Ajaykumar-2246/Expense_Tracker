@@ -2,7 +2,7 @@ import { create } from "zustand";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const Base_Url = "http://localhost:3000/api/users";
+const Base_Url = "https://spendly-qhpk.onrender.com/api/users";
 axios.defaults.withCredentials = true;
 
 export const useAuthStore = create((set) => ({
