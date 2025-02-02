@@ -57,7 +57,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center w-full h-screen bg-gradient-to-r from-blue-300 to-indigo-200">
+    <div className="flex items-center justify-center w-full h-screen ">
       <div className="bg-white shadow-2xl  rounded-2xl w-full sm:w-96 px-8 py-10">
         <h1 className="text-2xl font-semibold text-gray-800 text-center mb-6">
           Log In

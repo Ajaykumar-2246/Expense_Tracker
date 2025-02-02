@@ -75,7 +75,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex items-center justify-center w-full h-screen bg-gradient-to-r from-blue-300 to-indigo-200">
+    <div className="flex items-center justify-center w-full h-screen ">
       <div className="bg-white shadow-2xl rounded-2xl w-full max-w-sm px-8 py-4">
         <h1 className="text-3xl font-bold text-gray-800 text-center mb-3">Create an Account</h1>
         <form onSubmit={handleFormData}>
