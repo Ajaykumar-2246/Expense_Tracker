@@ -39,7 +39,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="text-2xl italic md:text-3xl font-semibold focus:none text-blue-400">
             <Link to="/" className="hover:text-blue-500 transition">
-              Expense_Tracker
+            Spendly
             </Link>
           </div>
 
