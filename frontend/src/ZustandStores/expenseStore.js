@@ -2,7 +2,8 @@ import { create } from "zustand";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const baseUrl = "https://spendly-qhpk.onrender.com/api/expense";
+const baseUrl = "https://spendly-qhpk.onrender.com";
+// const baseUrl="http://localhost:3000"
 axios.defaults.withCredentials = true;
 
 export const useExpense = create((set) => ({
@@ -14,7 +15,7 @@ export const useExpense = create((set) => ({
 
   postExpense: async (expenseData) => {
     try {
-      const response = await axios.post(`${baseUrl}/postExpense`, expenseData);
+      const response = await axios.post(`${baseUrl}/api/expense/postExpense`, expenseData);
       toast.success("Expense added successfully!");
     } catch (error) {
       console.error("Error posting expense:", error);
@@ -24,7 +25,7 @@ export const useExpense = create((set) => ({
 
   getExpense: async () => {
     try {
-      const response = await axios.get(`${baseUrl}/getexpenses`);
+      const response = await axios.get(`${baseUrl}/api/expense/getexpenses`);
       if (response.status === 401 || response.status === 403) {
         return; // Do nothing if unauthorized
       }
@@ -63,7 +64,7 @@ export const useExpense = create((set) => ({
 
   getExpenseById: async (id) => {
     try {
-      const res = await axios.get(`${baseUrl}/getExpenseByID/${id}`);
+      const res = await axios.get(`${baseUrl}/api/expense/getExpenseByID/${id}`);
       set({ expenseOfId: res.data.expense });
     } catch (error) {
       console.error("Error fetching expense by id:", error);
@@ -73,7 +74,7 @@ export const useExpense = create((set) => ({
 
   deleteExpense: async (id) => {
     try {
-      const response = await axios.delete(`${baseUrl}/deleteexpense/${id}`);
+      const response = await axios.delete(`${baseUrl}/api/expense/deleteexpense/${id}`);
       toast.success("successfully deleted");
     } catch (error) {
       console.error("Error deleting expense:", error);
@@ -82,7 +83,7 @@ export const useExpense = create((set) => ({
 
   updateExpense:async (id,expenseData) => {
     try{
-      const response = await axios.put(`${baseUrl}/update/${id}`,expenseData);
+      const response = await axios.put(`${baseUrl}/api/expense/update/${id}`,expenseData);
       set({updatingExpense:false})
       toast.success("expense successfully updated");
     } 

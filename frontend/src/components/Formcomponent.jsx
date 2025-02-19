@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAuthStore } from "../ZustandStores/authStore";
-import { useExpense } from "../ZustandStores/expenseStore"; // Import useExpense store
+import { useExpense } from "../ZustandStores/expenseStore";
 
 const Formcomponent = () => {
   // State variables
@@ -55,10 +55,10 @@ const Formcomponent = () => {
   };
 
   return (
-    <div className="p-4 w-full shadow-2xl sm:max-w-xl rounded-lg bg-white mx-auto">
+    <div className="p-6 w-full max-w-2xl mx-auto bg-white rounded-xl shadow-lg">
       {/* Display warning if total saving is low */}
       {typeof totalSaving === "number" && totalSaving <= 10 && (
-        <div className="p-2 text-red-500 text-center">
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-center">
           <p>
             Please add income first. After adding income, you can then add
             expenses.
@@ -67,15 +67,16 @@ const Formcomponent = () => {
       )}
 
       {/* Display Error Message */}
-      {error && <p className="text-red-500 p-2 text-center">{error}</p>}
+      {error && (
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-center">
+          {error}
+        </div>
+      )}
 
-      <form onSubmit={handleSubmit} className="p-2 space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         {/* Description Input */}
-        <div className="flex flex-col">
-          <label
-            htmlFor="description"
-            className="mb-1 font-medium text-gray-700"
-          >
+        <div className="space-y-2">
+          <label htmlFor="description" className="block text-sm font-medium text-gray-700">
             Description
           </label>
           <input
@@ -83,15 +84,15 @@ const Formcomponent = () => {
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             placeholder="Enter a description"
             required
           />
         </div>
 
         {/* Price Input */}
-        <div className="flex flex-col">
-          <label htmlFor="price" className="mb-1 font-medium text-gray-700">
+        <div className="space-y-2">
+          <label htmlFor="price" className="block text-sm font-medium text-gray-700">
             Amount
           </label>
           <input
@@ -101,15 +102,15 @@ const Formcomponent = () => {
             onChange={(e) =>
               setPrice(e.target.value ? parseFloat(e.target.value) : "")
             }
-            className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             placeholder="Enter the amount"
             required
           />
         </div>
 
         {/* Date Input */}
-        <div className="flex flex-col">
-          <label htmlFor="date" className="mb-1 font-medium text-gray-700">
+        <div className="space-y-2">
+          <label htmlFor="date" className="block text-sm font-medium text-gray-700">
             Date
           </label>
           <input
@@ -117,26 +118,23 @@ const Formcomponent = () => {
             id="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             required
           />
         </div>
 
         {/* Dropdowns: Payment Method and Expense Category */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Payment Method */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="paymentMethod"
-              className="mb-1 font-medium text-gray-700"
-            >
-              Payment Method:
+          <div className="space-y-2">
+            <label htmlFor="paymentMethod" className="block text-sm font-medium text-gray-700">
+              Payment Method
             </label>
             <select
               id="paymentMethod"
               value={paymentMethod}
               onChange={(e) => setPaymentMethod(e.target.value)}
-              className="border focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300 rounded-lg p-2"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               required
             >
               <option value="">Select Payment Method</option>
@@ -149,18 +147,15 @@ const Formcomponent = () => {
           </div>
 
           {/* Expense Category */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="expenseCategory"
-              className="mb-1 font-medium text-gray-700"
-            >
-              Category:
+          <div className="space-y-2">
+            <label htmlFor="expenseCategory" className="block text-sm font-medium text-gray-700">
+              Category
             </label>
             <select
               id="expenseCategory"
               value={expenseCategory}
               onChange={(e) => setExpenseCategory(e.target.value)}
-              className="border focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300 rounded-lg p-2"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               required
             >
               <option value="">Select a Category</option>
@@ -174,15 +169,16 @@ const Formcomponent = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600"
+          className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all"
         >
           Submit
         </button>
       </form>
 
       {/* Display Savings */}
-      <div className="p-2 flex gap-3">
-        <strong>Saving:</strong> {totalSaving}
+      <div className="mt-6 p-4 bg-gray-50 rounded-lg text-center">
+        <strong className="text-gray-700">Total Savings:</strong>
+        <span className="ml-2 text-blue-600 font-semibold">${totalSaving}</span>
       </div>
     </div>
   );

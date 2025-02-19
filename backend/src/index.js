@@ -12,7 +12,7 @@ const app = express();
 // CORS Middleware
 app.use(
   cors({
-    origin: "https://spendly-qhpk.onrender.com",
+    origin: ["http://localhost:5173","https://spendly-qhpk.onrender.com"],
     credentials: true,
   })
 );

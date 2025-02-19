@@ -41,14 +41,17 @@ const UpdatePage = () => {
   };
 
   return (
-    <div className="p-4">
-      <div className="p-4 w-full shadow-2xl sm:max-w-xl rounded-lg bg-white mx-auto">
-        <form className="p-2 space-y-4" onSubmit={handleSubmit}>
+    <div className="min-h-screen  flex items-center justify-center p-4">
+      <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
+        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+          Update Expense
+        </h1>
+        <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Description Input */}
-          <div className="flex flex-col">
+          <div className="space-y-2">
             <label
               htmlFor="description"
-              className="mb-1 font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700"
             >
               Description
             </label>
@@ -57,15 +60,18 @@ const UpdatePage = () => {
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               placeholder="Enter a description"
               required
             />
           </div>
 
           {/* Amount Input */}
-          <div className="flex flex-col">
-            <label htmlFor="amount" className="mb-1 font-medium text-gray-700">
+          <div className="space-y-2">
+            <label
+              htmlFor="amount"
+              className="block text-sm font-medium text-gray-700"
+            >
               Amount
             </label>
             <input
@@ -73,15 +79,18 @@ const UpdatePage = () => {
               id="amount"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               placeholder="Enter the amount"
               required
             />
           </div>
 
           {/* Date Input */}
-          <div className="flex flex-col">
-            <label htmlFor="date" className="mb-1 font-medium text-gray-700">
+          <div className="space-y-2">
+            <label
+              htmlFor="date"
+              className="block text-sm font-medium text-gray-700"
+            >
               Date
             </label>
             <input
@@ -89,26 +98,26 @@ const UpdatePage = () => {
               id="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               required
             />
           </div>
 
           {/* Dropdowns: Payment Method and Expense Category */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Payment Method */}
-            <div className="flex flex-col">
+            <div className="space-y-2">
               <label
                 htmlFor="paymentMethod"
-                className="mb-1 font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700"
               >
-                Payment Method:
+                Payment Method
               </label>
               <select
                 id="paymentMethod"
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value)}
-                className="border focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300 rounded-lg p-2"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 required
               >
                 <option value="">Select Payment Method</option>
@@ -121,18 +130,18 @@ const UpdatePage = () => {
             </div>
 
             {/* Expense Category */}
-            <div className="flex flex-col">
+            <div className="space-y-2">
               <label
                 htmlFor="expenseCategory"
-                className="mb-1 font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700"
               >
-                Category:
+                Category
               </label>
               <select
                 id="expenseCategory"
                 value={expenseCategory}
                 onChange={(e) => setExpenseCategory(e.target.value)}
-                className="border focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300 rounded-lg p-2"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 required
               >
                 <option value="">Select a Category</option>
@@ -146,7 +155,7 @@ const UpdatePage = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600"
+            className="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Update Expense
           </button>

@@ -21,78 +21,93 @@ const AllExpenses = () => {
   };
 
   const handleUpdateExpenseDetails = async (expenseId) => {
-    navigate(`/update/${expenseId}`)
+    navigate(`/update/${expenseId}`);
   };
 
   return (
-    <div className="flex flex-col gap-2">
-      {allExpense?.expenses && allExpense.expenses.length > 0 ? (
-        <div className="flex gap-3 items-center justify-center flex-wrap">
-          <div>
-            <span className="inline-block w-3 h-3 bg-green-400"></span> Income
+    <div className="container mx-auto px-4 py-8">
+      {/* Legend for Expense Categories */}
+      {allExpense?.expenses && allExpense.expenses.length > 0 && (
+        <div className="flex justify-center gap-4 mb-8">
+          <div className="flex items-center">
+            <span className="inline-block w-3 h-3 bg-green-400 rounded-full mr-2"></span>
+            Income
           </div>
-          <div>
-            <span className="inline-block w-3 h-3 bg-red-400"></span> Expenses
+          <div className="flex items-center">
+            <span className="inline-block w-3 h-3 bg-red-400 rounded-full mr-2"></span>
+            Expenses
           </div>
-          <div>
-            <span className="inline-block w-3 h-3 bg-blue-400"></span>
+          <div className="flex items-center">
+            <span className="inline-block w-3 h-3 bg-blue-400 rounded-full mr-2"></span>
             Investment
           </div>
         </div>
-      ) : null}
+      )}
 
-      <div className="flex justify-center gap-x-3  flex-wrap">
+      {/* Expense Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {allExpense?.expenses && allExpense.expenses.length > 0 ? (
           allExpense.expenses.map((expense) => (
-            <div key={expense._id} className=" mb-4 ">
-              <div
-                className={`${
-                  expense.expenseCategory === "income"
-                    ? "bg-green-400"
-                    : expense.expenseCategory === "investment"
-                    ? "bg-blue-400"
-                    : "bg-red-400"
-                } min-w-72 min-h-40 py-3 px-4 rounded-md cursor-pointer
-               shadow-xl hover:shadow-gray-400
-               transform transition-all duration-300 hover:scale-105`}
-              >
-                <div className="flex gap-3 pb-2 items-center justify-end ">
+            <div
+              key={expense._id}
+              className={`${
+                expense.expenseCategory === "income"
+                  ? "bg-green-50 border-green-400"
+                  : expense.expenseCategory === "investment"
+                  ? "bg-blue-50 border-blue-400"
+                  : "bg-red-50 border-red-400"
+              } border-l-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300`}
+            >
+              <div className="p-6">
+                <div className="flex justify-end space-x-4">
                   <button
                     onClick={() => handleUpdateExpenseDetails(expense._id)}
+                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
                   >
-                    <FaEdit />
+                    <FaEdit className="w-5 h-5" />
                   </button>
-                  <button onClick={() => handleExpenseDetails(expense._id)}>
+                  <button
+                    onClick={() => handleExpenseDetails(expense._id)}
+                    className="text-gray-600 hover:text-red-600 transition-colors duration-300"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 448 512"
-                      width="13px"
+                      className="w-5 h-5"
                     >
                       <path d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.7 23.7 0 0 0 -21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0 -16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z" />
                     </svg>
                   </button>
                 </div>
-                <div>
-                  <strong>Description:</strong> {expense.description}
-                </div>
-                <div>
-                  <strong>Amount:</strong> {expense.amount}
-                </div>
-                <div>
-                  <strong>Payment Method:</strong> {expense.paymentMethod}
-                </div>
-                <div>
-                  <strong>Expense Category:</strong> {expense.expenseCategory}
-                </div>
-                <div>
-                  <strong>Date:</strong>{" "}
-                  {new Date(expense.date).toLocaleDateString()}
+                <div className="space-y-2">
+                  <div>
+                    <strong className="text-gray-700">Description:</strong>{" "}
+                    <span className="text-gray-600">{expense.description}</span>
+                  </div>
+                  <div>
+                    <strong className="text-gray-700">Amount:</strong>{" "}
+                    <span className="text-gray-600">{expense.amount}</span>
+                  </div>
+                  <div>
+                    <strong className="text-gray-700">Payment Method:</strong>{" "}
+                    <span className="text-gray-600">{expense.paymentMethod}</span>
+                  </div>
+                  <div>
+                    <strong className="text-gray-700">Expense Category:</strong>{" "}
+                    <span className="text-gray-600">{expense.expenseCategory}</span>
+                  </div>
+                  <div>
+                    <strong className="text-gray-700">Date:</strong>{" "}
+                    <span className="text-gray-600">
+                      {new Date(expense.date).toLocaleDateString()}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           ))
         ) : (
-          <p>No expenses found</p>
+          <p className="text-center text-gray-600 col-span-full">No expenses found</p>
         )}
       </div>
     </div>
